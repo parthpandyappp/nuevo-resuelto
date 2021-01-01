@@ -7,7 +7,10 @@ from django.contrib.auth.models import User
 class Resolution(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=20)
-    author = models.CharField(models.ForeignKey(User))
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
     body = models.TextField()
     is_done = models.BooleanField(default=False)
     created = models.DateField(auto_now_add=True)
