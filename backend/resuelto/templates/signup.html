@@ -1,4 +1,28 @@
+<!DOCTYPE html>
+
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'styles/signup.css' %}">
-<script src= "{% static 'js/signup.js' %}""></script>
-<h1>Home Page</h2>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/signup.css' %}">
+    <script src= "{% static 'js/signup.js' %}"></script>
+</head>
+
+<body>
+    <h1>Registration Page</h1>
+    <form>
+    <label for="firstname"><b>First name: </b></label><br>
+    <input type="text" id="firstname" placeholder="Enter your first name" name="firstname" required><br>
+    <label for="lastname"><b>Last name: </b></label><br>
+    <input type="text" id="lastname" placeholder="Enter your last name" name="lastname" required><br>
+    <label for="user"><b>Username: </b></label><br>
+    <input type="text" id="user" placeholder="Enter a username" name="user" required><br>
+    <label for="pass"><b>Password: </b></label><br>
+    <input type="text" id="pass" placeholder="Enter a password" name="pass" required><br>
+    <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
+
+
