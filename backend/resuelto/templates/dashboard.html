@@ -1,4 +1,5 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/dashboard.css' %}">
 <script src= "{% static 'js/dashboard.js' %}""></script>
-<h1>Home Page</h2>
+<h1>Welcome, {{request.user}}</h1>
+<a href="{% url 'LogoutUser' %}">Logout</a>

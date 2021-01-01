@@ -19,8 +19,9 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('login/', views.login, name='login'),
+    path('login/', views.loginPage, name='LoginPage'),
     path('signup/', views.signup, name='signup'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('calendar/', views.calendar, name='calendar')
+    path('calendar/', views.calendar, name='calendar'),
+    path('logout/', views.logoutUser, name='LogoutUser')
 ]
