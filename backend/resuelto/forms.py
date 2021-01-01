@@ -1,8 +1,8 @@
 from django.forms import ModelForm
-from .models import resolute
+from .models import Resolution
 
 
 class ResolutionForm(ModelForm):
     class Meta:
-        model = resolute
+        model = Resolution
         fields = '__all__'
