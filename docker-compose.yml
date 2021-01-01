@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend/:/backend # maps host diretory to internal container directory
+    working_dir: /backend/
+    command: sh entrypoint.sh
+    ports: 
+      - 8000:8000
