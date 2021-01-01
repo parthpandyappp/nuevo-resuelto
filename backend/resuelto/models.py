@@ -17,4 +17,10 @@ class resolute(models.Model):
     expires = models.DateField()
 
     def __str__(self):
-        return self.title
+        return {
+            "title": self.title,
+            "author": self.author,
+            "done": self.done,
+            "expires": self.expires,
+            "body": self.body
+        }

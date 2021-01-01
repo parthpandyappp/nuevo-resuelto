@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import RegistrationForm, ResolutionForm
 from django.contrib.auth import authenticate, login, logout
 from datetime import date
-
+from .models import resolute
 
 # Create your views here.
 
@@ -31,6 +31,11 @@ def signup(request):
 
 def dashboard(request):
     return render(request, "dashboard.html", {})
+
+
+def resolutionPosts(request):
+    list = resolute.objects.all()
+    return render(request, "resolutionPosts.html", {"list": list})
 
 
 def calendar(request):
