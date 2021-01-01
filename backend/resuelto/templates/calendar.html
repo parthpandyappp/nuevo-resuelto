@@ -2,3 +2,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles/calendar.css' %}">
 <script src= "{% static 'js/calendar.js' %}""></script>
 <h1>Home Page</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="submit">
+</form>

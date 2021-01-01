@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm
+from .forms import RegistrationForm, ResolutionForm
 from django.contrib.auth import authenticate, login, logout
+from datetime import date
+
+
 # Create your views here.
 
 
@@ -31,7 +34,24 @@ def dashboard(request):
 
 
 def calendar(request):
-    return render(request, "calendar.html", {})
+    if request.method == 'POST':
+        print(request.POST)
+        form = ResolutionForm(request.POST)
+        if form.is_valid():
+            respost = form.save(commit=False)
+            today = date.today()
+            respost.done = False
+            respost.author = request.user
+            respost.created = today.strftime("%Y-%m-%d")
+            respost.modified = today.strftime("%Y-%m-%d")
+            respost.save()
+            form = ResolutionForm()
+            return render(request, "calendar.html", {"form": form})
+        else:
+            return redirect('calendar')
+    else:
+        form = ResolutionForm()
+        return render(request, "calendar.html", {"form": form})
 
 
 def loginPage(request):

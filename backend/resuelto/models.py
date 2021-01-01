@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class resolute(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=20)
     author = models.ForeignKey(
         User,
