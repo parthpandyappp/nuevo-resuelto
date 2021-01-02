@@ -4,11 +4,10 @@ from django.contrib.auth import authenticate, login, logout
 from datetime import date
 from .models import resolute
 
-# Create your views here.
-
 
 def home(request):
-    return render(request, "home.html", {})
+    form = ResolutionForm()
+    return render(request, "home.html", {"form": form})
 
 
 def signup(request):
