@@ -29,7 +29,24 @@ def signup(request):
 
 
 def dashboard(request):
-    return render(request, "dashboard.html", {})
+    if request.method == 'POST':
+        print(request.POST)
+        form = ResolutionForm(request.POST)
+        if form.is_valid():
+            respost = form.save(commit=False)
+            today = date.today()
+            respost.done = False
+            respost.author = request.user
+            respost.created = today.strftime("%Y-%m-%d")
+            respost.modified = today.strftime("%Y-%m-%d")
+            respost.save()
+            form = ResolutionForm()
+            return render(request, "dashboard.html", {"form": form})
+        else:
+            return redirect('dashboard')
+    else:
+        form = ResolutionForm()
+        return render(request, "dashboard.html", {"form": form})
 
 
 def resolutionPosts(request):

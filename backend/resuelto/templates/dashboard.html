@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="jumbotron bg-primary text-center text-white">
-        <h1>NewRes</h1>
+        <h1>Hello {{request.user}}</h1>
     </div>
 
     <div class="container-fluid">
@@ -38,12 +38,13 @@
                 <!-- submission-->
                 <h6>New Resolution</h6>
                 <form class="form" method="POST">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-sm-3">
                             <label for="fname">Title</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="fname" name="Title" placeholder="Title">
+                            <input type="text" id="fname" name="{{form.title.name}}" placeholder="Title">
                         </div>
                     </div>
                     
@@ -52,7 +53,7 @@
                             <label for="EXPIRES_M">Finish Date</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="date" id="goalDate" name="goalDate">
+                            <input type="date" id="goalDate" name="{{form.expires.name}}">
                         <!-- Option for date picking
                             <select id="EXPIRES_Month" name="EXPIRES_M">
                                 <option value="Jan">Jan</option>
@@ -68,7 +69,7 @@
                             <label for="RESOLUTION">Resolution</label>
                         </div>
                         <div class="col-sm-9">
-                            <textarea id="BODY" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                            <input type=textarea id="BODY" name="{{form.body.name}}" placeholder="Write something.." style="height:200px"></textarea>
                         </div>
                     </div>
                     <div class="row">
