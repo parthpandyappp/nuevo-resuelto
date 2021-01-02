@@ -5,11 +5,11 @@ from django.db.models import CASCADE
 
 class ResolutionManager(models.Manager):
     def get_resolutions(self, **kwargs):
-        """optionally takes a month, day, offset or limit,
-        returns a limited queryset with up to 25 entries
+        """optionally takes a month, day, returns
+        a limited queryset with up to 25 entries
         by default, or a single entry if given an id.
         """
-        queryset = super()
+        queryset = super().get_queryset()
         if kwargs.get('id', None):
             return queryset.get(id=kwargs['id'])
 
@@ -19,19 +19,38 @@ class ResolutionManager(models.Manager):
             if kwargs.get('day', None):
                 queryset = queryset.filter(expires__day=kwargs['day'])
 
-        offset = kwargs.get('offset', 0)
-        if (not isinstance(offset, int)) or offset < 0:
-            offset = 0
-
-        limit = kwargs.get('limit', 25)
-        if (not isinstance(limit, int)) or 25 < limit < 1:
-            limit = 25
-
-        queryset = queryset[offset:limit]
-
         return queryset
 
-    def get_sorted_resolutions(self, resolutions):
+    def filter_resolutions(self, **kwargs):
+        """takes offset, limit, and max_limit kwargs.
+        If omitted will use default options.
+        
+        offset = resolution return offset
+        limit = limit requested
+        max_limit = maximum limit of return entries
+        """
+        queryset = super().get_queryset()
+       
+        offset = kwargs.get('offset', 0)
+        if offset < 0:
+            offset = 0
+
+        max_limit = kwargs.get('max_limit', 25)
+        if not isinstance(max_limit, int):
+            max_limit = 25
+        elif max_limit < 1:
+            max_limit = 25
+
+        limit = kwargs.get('limit', max_limit)
+        if max_limit < limit or limit < 1:
+            limit = max_limit
+
+        limit = offset+limit
+        queryset = queryset[offset:limit]
+        
+        return queryset
+
+    def sort_resolutions(self, resolutions):
         """takes a list of resolutions and returns a sorted dictionary"""
         sorted_resolutions = {}
         for item in resolutions:
@@ -56,7 +75,7 @@ class resolute(models.Model):
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
     expires = models.DateField()
-    # manager = ResolutionManager()
+    manager = ResolutionManager()
 
     '''def __str__(self):
         return {

@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm, ResolutionForm
+from .forms import RegistrationForm, ResolutionForm, ResolutionGetForm
 from django.contrib.auth import authenticate, login, logout
 from datetime import date
 from .models import resolute
-
 
 def home(request):
     form = ResolutionForm()
@@ -49,9 +48,14 @@ def dashboard(request):
         return render(request, "dashboard.html", {"form": form})
 
 
-def resolutionPosts(request):
-    list = resolute.objects.all()
-    return render(request, "resolutionPosts.html", {"list": list})
+def resolutionPosts(request, **kwargs):
+    resolutions = resolute.manager.get_resolutions()
+        
+    form = ResolutionGetForm(request.GET)
+    form.is_valid()
+    resolutions = resolute.manager.filter_resolutions(**form.cleaned_data)
+
+    return render(request, "resolutionPosts.html", {"list": resolutions})
 
 
 def calendar(request):

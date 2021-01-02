@@ -35,3 +35,7 @@ class ResolutionForm(forms.ModelForm):
     class Meta:
         model = resolute
         fields = ['title', 'body', 'expires']
+
+class ResolutionGetForm(forms.Form):
+    offset = forms.IntegerField(min_value=0)
+    limit = forms.IntegerField(min_value=1)
