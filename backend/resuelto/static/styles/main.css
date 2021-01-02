@@ -92,7 +92,7 @@ h1{
     justify-content: center;
     align-items: center;
 }
-.linkflexcontainer a{
+.buttoncus{
     font-size: 30px;
     height: 40x;
     border: 1px solid white;
@@ -103,7 +103,7 @@ h1{
     border-right: 20px;
     border-left: 20px;
 }
-.linkflexcontainer a:hover{
+.buttoncus:hover{
     color: black;
     border: 1px solid white;
     animation: banim 2s linear infinite;

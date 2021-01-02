@@ -5,14 +5,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/post.css' %}">
+    
     <title>Document</title>
 </head>
 
 <body>
-    {% for x in list %}
-    {{x.title}} By <i>{{x.author}}</i> <br>
-    {{x.body}} <br>
-    {% endfor %}
+    <div class="cursor"></div>
+<div id="container">
+    <div id="navbar">
+        <div class="navbarcontainer">
+            <div class="logoutuser">
+                <a href="{% url 'LogoutUser' %}" class="buttoncus">Dashboard</a>
+            </div>
+            <div class="logoutuser">
+                <a href="{% url 'LogoutUser' %}" class="buttoncus">Logout</a>
+            </div>
+            <div class="username">
+                <h3>{{request.user}}</h3>
+            </div>        
+        </div>
+       
+    </div>
+    <div id="postbar">
+        <div class="postcontainer">
+            {% for x in list %}
+            <div class="postgrid">
+                <div class="title">{{x.title}}</div>
+                <div class="author">By {{x.author}}</div>
+                <div class="body">{{x.body}}</div>
+                <div class="support">
+                    <form method="post">
+                        <input type="text" value={{x.id}} hidden>
+                        <input type="submit" class="buttoncust" value="Support">
+                    </form>
+                    <a href="" class="buttoncus">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="sidebar">
+        <img src="http://pinit.top/quotes/wp-content/uploads/2019/08/Motivational-quotes-For-additional-motivation-inspiration-and-vast-topics-of-knowledge-visit-us.jpg" alt="image"></img>
+        <img src="https://i.pinimg.com/originals/4d/0d/9e/4d0d9e383c85e4908f31d0f3a00297ac.jpg" alt="motivation"></img>
+    </div>
+</div>
+<script src="{% static 'js/home.js' %}""></script>
 </body>
 
 </html>
