@@ -1,22 +1,52 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
 
+{% load static %}
+
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+    <script src= "{% static 'js/login.js' %}""></script>
+
+    
+    <!--libraries for bootstrap -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-    <form action="" method="post">
-        {% csrf_token %}
-        <label for="usernamex">Username</label>
-        <input type="text" name="username" id="usernamex" />
-        <label for="passwordx">Password</label>
-        <input type="password" name="password" id="passwordx" />
-        <input type="submit" value="Submit" />
-    </form>
-</body>
+    <div class="jumbotron text-center text-white" style="background-color: #9CF7EC;">
+        <h1>NewRes</h1>
+    </div>
+    
+        <form method ="post">
+            <div class="row justify-content-center">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+            
+                
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </div>
+            <div class="row justify-content-center">
+                <button type="submit">Login</button>
+            </div>
+            
+            
+        </form>
+    </div>
 
+</body>
+    
+=
 </html>
