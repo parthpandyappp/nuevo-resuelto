@@ -66,7 +66,11 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            me = request.user.username
+            you = f"Welcome {me}, You're succesfully logged in!"
+            messages.success(request, you)
             return redirect('dashboard')
+    messages.error(request, "Sorry, something went wrong. Please check the provided credentials")
     return render(request, "login.html", context)
 
 
