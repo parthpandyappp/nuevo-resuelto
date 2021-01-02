@@ -1,20 +1,51 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+class ResolutionManager(models.Manager):
+    def get_resolutions(self, **kwargs):
+        queryset = super()
+        if kwargs.get('id', None):
+            return queryset.get(id=kwargs['id'])
+        
+        if kwargs.get('month', None):
+            queryset = queryset.filter(expires__month=kwargs['month'])
+            
+            if kwargs.get('day', None):
+                queryset = queryset.filter(expires__day=kwargs['day'])
+
+        offset = kwargs.get('offset', 0)
+        if (not isinstance(offset, int)) or offset < 0:
+            offset = 0
+        
+        limit = kwargs.get('limit', 25)
+        if (not isinstance(limit, int)) or limit < 1:
+            limit = 25
+
+        queryset = queryset[offset:limit]
+
+        return queryset
 
 
-class Resolution():
+    def get_sorted_resolutions(self, resolutions):
+        sorted_resolutions = {}
+        for item in resolutions:
+            if item.expires.month not in sorted_resolutions:
+                sorted_resolutions[item.expires.month] = {}
+            if item.expires.day not in sorted_resolutions[item.expires.month]:
+                sorted_resolutions[item.expires.month][item.expires.day] = []
+            sorted_resolutions[item.expires.month][item.expires.day].append(item)
+        return sorted_resolutions
+
+class Resolution(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=20)
-    author = models.CharField(models.ForeignKey(User))
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     is_done = models.BooleanField(default=False)
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
-    expiry_month = models.DateField()
-    expiry_day = models.DateField()
+    expires = models.DateField()
+    manager = ResolutionManager()
 
     def __str__(self):
-        return self.title
-
+        return self.title         
