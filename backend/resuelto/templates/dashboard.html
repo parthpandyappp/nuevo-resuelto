@@ -9,8 +9,10 @@
     <script src="{% static 'js/dashboard.js' %}""></script>
     <title>Document</title>
 </head>
+
 <body>
     <h1>Welcome, {{request.user}}</h1>
     <a href=" {% url 'LogoutUser' %}">Logout </a> 
 </body> 
+
 </html>
