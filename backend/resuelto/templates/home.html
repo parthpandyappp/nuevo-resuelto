@@ -6,13 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
-    <title>Document</title>
+    <title>NUEVO</title>
 </head>
 <body>
-    <div class="cursor">
-
+    <div class="cursor"></div>
+    <div class="headcontainer">
+        <h1>NUEVO RESUELTO</h1>
     </div>
-    <h1>Home Page</h2>
+    <div class="linkcontainer">
+        <div class="linkflexcontainer">
+            <a href="{% url 'LoginPage'%}">LOGIN</a>
+        </div>
+        <div class="linkflexcontainer">
+            <a href="{% url 'LoginPage'%}">SIGNUP</a>
+        </div>
+    </div>
     <script src="{% static 'js/home.js' %}""></script>
 </body>
 </html>

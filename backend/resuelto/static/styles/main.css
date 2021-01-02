@@ -1,11 +1,14 @@
-h1{
-    color: blue;
-}
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@900&display=swap');
+
 body{
     margin: 0;
     border: 0;
     height: 100vh;
     background-color: black;
+    font-family: 'Source Code Pro', monospace;
+}
+h1{
+    color:white;
 }
 .cursor{
     width: 40px;
@@ -43,6 +46,7 @@ body{
     }
     to{
         transform:scale(.4);
+        opacity: 0;
     }
 }
 @keyframes canim3{
@@ -60,4 +64,78 @@ body{
 .expand{
     animation: canim3 .5s linear infinite;
     border: 1px solid red;
+}
+.headcontainer{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    
+
+}
+.headcontainer h1{
+    font-size: 100px;
+    letter-spacing: 5px;
+}
+
+.linkcontainer{
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+}
+.linkflexcontainer{
+    margin-left: 60px;
+    display: flex;
+    border: 1px solid white;
+    height: 60px;
+    width: 120px;
+    justify-content: center;
+    align-items: center;
+}
+.linkflexcontainer a{
+    font-size: 30px;
+    height: 40x;
+    border: 1px solid white;
+    border-spacing: 20px;
+    color: white;
+    text-decoration: none;
+    line-height: 60px;
+    border-right: 20px;
+    border-left: 20px;
+}
+.linkflexcontainer a:hover{
+    color: black;
+    border: 1px solid white;
+    animation: banim 2s linear infinite;
+    
+}
+@keyframes banim{
+    0%{
+        color: magenta ;
+    }
+    50%{
+        color: green;
+    }
+    100%{
+        color: magenta;
+    }
+}
+.linkflexcontainer:hover{
+    background-color: white;
+    color: black;
+}
+h1:hover{
+    animation: hanim 2s linear infinite;
+}
+@keyframes hanim{
+    0%{
+        color: green;
+    }
+    50%{
+       
+        color: cyan;
+    }
+    100%{
+        color: green;
+    }
 }
