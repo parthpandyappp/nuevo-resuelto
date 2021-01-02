@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 
 class ResolutionManager(models.Manager):
     def get_resolutions(self, **kwargs):
+        """optionally takes a month, day, offset or limit,
+        returns a limited queryset with up to 25 entries
+        by default, or a single entry if given an id.
+        """
         queryset = super()
         if kwargs.get('id', None):
             return queryset.get(id=kwargs['id'])
@@ -18,15 +22,15 @@ class ResolutionManager(models.Manager):
             offset = 0
         
         limit = kwargs.get('limit', 25)
-        if (not isinstance(limit, int)) or limit < 1:
+        if (not isinstance(limit, int)) or 25 < limit < 1:
             limit = 25
 
         queryset = queryset[offset:limit]
 
         return queryset
 
-
     def get_sorted_resolutions(self, resolutions):
+        """takes a list of resolutions and returns a sorted dictionary"""
         sorted_resolutions = {}
         for item in resolutions:
             if item.expires.month not in sorted_resolutions:
@@ -48,4 +52,12 @@ class Resolution(models.Model):
     manager = ResolutionManager()
 
     def __str__(self):
-        return self.title         
+        return self.title
+
+class Bio(models.Model):
+    id = models.IntegerField(primary_key=True)
+    body = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.body
