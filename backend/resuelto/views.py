@@ -3,6 +3,7 @@ from .forms import RegistrationForm, ResolutionForm
 from django.contrib.auth import authenticate, login, logout
 from datetime import date
 from .models import resolute
+from django.contrib import messages
 
 
 def home(request):
@@ -89,8 +90,12 @@ def loginPage(request):
             you = f"Welcome {me}, You're succesfully logged in!"
             messages.success(request, you)
             return redirect('dashboard')
-    messages.error(request, "Sorry, something went wrong. Please check the provided credentials")
-    return render(request, "login.html", context)
+        else:
+            messages.error(
+                request, "Sorry, something went wrong. Please check the provided credentials")
+            return render(request, "login.html", context)
+    else:
+        return render(request, "login.html", context)
 
 
 def logoutUser(request):
