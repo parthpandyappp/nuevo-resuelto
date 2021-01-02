@@ -1,3 +1,11 @@
 h5.goalDateInfo{
     text-align:right
 }
+.navbar {
+    margin-bottom:0;
+    margin-top: 0;
+  }
+.jumbotron {
+    margin-bottom:0;
+    /*background-color: #9CF7EC !Important*/; 
+}
