@@ -67,12 +67,14 @@ def calendar(request):
             respost.modified = today.strftime("%Y-%m-%d")
             respost.save()
             form = ResolutionForm()
-            return render(request, "calendar.html", {"form": form})
+            list = resolute.objects.filter(author=request.user)
+            return render(request, "calendar.html", {"form": form, "list": list})
         else:
             return redirect('calendar')
     else:
         form = ResolutionForm()
-        return render(request, "calendar.html", {"form": form})
+        list = resolute.objects.filter(author=request.user)
+        return render(request, "calendar.html", {"form": form, "list": list})
 
 
 def loginPage(request):
