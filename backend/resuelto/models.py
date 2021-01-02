@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import CASCADE
 
 
 class ResolutionManager(models.Manager):
@@ -57,20 +58,28 @@ class resolute(models.Model):
     expires = models.DateField()
     # manager = ResolutionManager()
 
-    def __str__(self):
+    '''def __str__(self):
         return {
             "title": self.title,
             "author": self.author,
             "done": self.done,
             "expires": self.expires,
-            "body": self.body
-        }
+            "body": self.body,
+            "id": self.id
+        }'''
 
 
 class Bio(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     body = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.body
+
+
+class Joined(models.Model):
+    joined_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    resolution = models.ForeignKey(resolute, on_delete=models.CASCADE)
+    # author = models.ForeignKey(User, on_delete=models.CASCADE)
