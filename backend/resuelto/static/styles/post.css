@@ -1,0 +1,112 @@
+body{
+    margin: 0;
+}
+#container{
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 0.8fr 1fr 1fr;
+    grid-template-areas: 
+    'Nav Nav Nav Nav'
+    'Sidebar Post Post Post'
+    'Sidebar Post Post Post'
+    'Sidebar Post Post Post';
+}
+#navbar {
+    grid-area: Nav;
+}
+#postbar{
+    padding-left: 20px;
+    grid-area: Post;
+    overflow: auto;
+}
+#sidebar{
+    background-color:black;
+    grid-area: Sidebar;
+    overflow: hidden;
+}
+.navbarcontainer{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 20px;
+}
+.logoutuser{
+    margin-right: 20px;
+}
+.username{
+    color: white;
+    margin-right: 20px;
+}
+.postgrid{
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 50px;
+    color: white;
+    display: grid;
+    height: 150px;
+    width: fit-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.8fr 0.2fr 2fr 1fr;
+    grid-template-areas: 
+    'Title'
+    'Author'
+    'Body'
+    'Support';
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 30px;
+    grid-area: Title;
+}
+.author{
+    display: flex;
+    align-items: center;
+    grid-area: Author;
+    justify-content: left;
+}
+.body{
+    display: flex;
+    justify-content: left;
+    grid-area: Body;
+}
+.support{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    grid-area: Support;
+}
+.buttoncus{
+    margin: 20px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    line-height: 20px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 50px;
+    font-size: 15px;
+}
+.buttoncus:hover{
+    color: black;
+    transform: scale(1.2);
+    background-color: white;
+}
+.buttoncust{
+    color:white;
+    border-radius: 50px;
+    background-color: black;
+    border: 1px solid white;
+    text-decoration: none;
+}
+.buttoncust:hover{
+    background-color: white;
+    color: black;
+}
+#sidebar img{
+    width: 280px
+}
