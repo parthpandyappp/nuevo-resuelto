@@ -22,32 +22,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="jumbotron text-center text-white" style="background-color: #9CF7EC;">
-        <h1>NewRes</h1>
-    </div>
-    
-        <form method ="post" action="">
-            {% csrf_token %}
-            <div class="row justify-content-center">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required>
-            
-                
-            </div>
-            <br>
-            <div class="row justify-content-center">
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
-            </div>
-            <div class="row justify-content-center">
-                <button type="submit">Login</button>
-            </div>
-            
-            
-        </form>
-    </div>
-
+{% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}
+        <p class="text-center">
+        <div class="alert alert-{{msg.level_tag}} alert-dismissible text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{msg.message}}
+        </div>
+        </p>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="usernamex">Username</label>
+        <input type="text" name="username" id="usernamex" />
+        <label for="passwordx">Password</label>
+        <input type="password" name="password" id="passwordx" />
+        <input type="submit" value="Submit" />
+    </form>
 </body>
-    
-=
 </html>
