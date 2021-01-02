@@ -1,0 +1,51 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/signup.css' %}">
+<script src= "{% static 'js/signup.js' %}""></script>
+<html lang="en">
+<head>
+<title>Home_page</title>
+  <link rel="stylesheet" type="text/css" href="{ % static 'styles/signup.css' %}">
+  <script src= "{% static 'js/signup.js' %}""></script>
+
+
+   <!--libraries for bootstrap -->
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <!-- Popper JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<<div class="">
+
+</div>
+    <form method ="post">
+           <div class="row justify-content-center">
+               <label for="email"><b>Email</b></label>
+               <input type="text" placeholder="Enter Email" name="email" required>
+
+
+           </div>
+           <br>
+           <div class="row justify-content-center">
+               <label for="psw1"><b>Password</b></label>
+               <input type="password" placeholder="Enter New Password" name="psw1" required>
+           </div>
+           <div class="row justify-content-center">
+               <label for="psw2"><b>Password</b></label>
+               <input type="password" placeholder="re-enter Password" name="psw2" required>
+           </div>
+           <div class="row justify-content-center" style = "height: 98px;">
+               <button type= "button" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+           </div>
+
+
+       </form>
+  <button type="button" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+</body>
