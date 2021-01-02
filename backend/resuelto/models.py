@@ -40,10 +40,14 @@ class ResolutionManager(models.Manager):
             sorted_resolutions[item.expires.month][item.expires.day].append(item)
         return sorted_resolutions
 
-class Resolution(models.Model):
-    id = models.IntegerField(primary_key=True)
+
+class resolute(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=20)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
     body = models.TextField()
     is_done = models.BooleanField(default=False)
     created = models.DateField(auto_now_add=True)
@@ -67,3 +71,4 @@ class Bio(models.Model):
 
     def __str__(self):
         return self.body
+

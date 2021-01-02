@@ -1,4 +1,16 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'styles/dashboard.css' %}">
-<script src= "{% static 'js/dashboard.js' %}""></script>
-<h1>Home Page</h2>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/dashboard.css' %}">
+    <script src="{% static 'js/dashboard.js' %}""></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome, {{request.user}}</h1>
+    <a href=" {% url 'LogoutUser' %}">Logout </a> 
+</body> 
+</html>
