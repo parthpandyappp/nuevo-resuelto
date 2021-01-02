@@ -52,7 +52,13 @@ class Resolution(models.Model):
     manager = ResolutionManager()
 
     def __str__(self):
-        return self.title
+        return {
+            "title": self.title,
+            "author": self.author,
+            "done": self.done,
+            "expires": self.expires,
+            "body": self.body
+        }
 
 class Bio(models.Model):
     id = models.IntegerField(primary_key=True)

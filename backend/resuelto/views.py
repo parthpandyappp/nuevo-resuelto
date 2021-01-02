@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
+from .forms import ResolutionForm
 # Create your views here.
 
 
 def home(request):
-    return render(request, "home.html", {})
+    form = ResolutionForm()
+    return render(request, "home.html", {"form": form})
 
 
 def login(request):
