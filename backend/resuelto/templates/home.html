@@ -1,4 +1,27 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
-<script src= "{% static 'js/home.js' %}""></script>
-<h1>Home Page</h2>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+    <title>NUEVO</title>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="headcontainer">
+        <h1>NUEVO RESUELTO</h1>
+    </div>
+    <div class="linkcontainer">
+        <div class="linkflexcontainer">
+            <a href="{% url 'LoginPage'%}">LOGIN</a>
+        </div>
+        <div class="linkflexcontainer">
+            <a href="{% url 'LoginPage'%}">SIGNUP</a>
+        </div>
+    </div>
+    <script src="{% static 'js/home.js' %}""></script>
+</body>
+</html>
+
