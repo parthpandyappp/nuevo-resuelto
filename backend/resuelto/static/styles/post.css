@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 body{
     margin: 0;
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 2px;
 }
 #container{
     display: grid;
@@ -19,15 +22,33 @@ body{
     grid-area: Nav;
 }
 #postbar{
-    background-color: black;
+    background-color:#333333;
     padding-left: 20px;
     grid-area: Post;
     overflow: auto;
 }
 #sidebar{
-    background-color:black;
+    text-align: center;
+    background-color: #DADADA;
     grid-area: Sidebar;
     overflow: hidden;
+}
+#sidebarquote{
+    padding-top: 200px;
+}
+.textanim{
+    animation: tanim 2s linear infinite;
+}
+@keyframes tanim{
+    0%{
+        color: #6FFFB0 ;
+    }
+    50%{
+        color:#FD6FFF ;
+    }
+    100%{
+        color:#6FFFB0;
+    }
 }
 .navbarcontainer{
     display: flex;
@@ -44,8 +65,7 @@ body{
 }
 .postgrid{
     margin-top: 10px;
-    border: 1px solid black;
-    border-radius: 50px;
+    
     color: white;
     display: grid;
     height: 150px;
@@ -64,6 +84,7 @@ body{
     justify-content: left;
     font-size: 30px;
     grid-area: Title;
+    color: #6FFFB0;
 }
 .author{
     display: flex;
@@ -81,22 +102,7 @@ body{
     align-items: center;
     justify-content: left;
     grid-area: Support;
-}
-.buttoncus{
-    margin: 20px;
-    color: white;
-    text-decoration: none;
-    border: 1px solid white;
-    line-height: 20px;
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 50px;
-    font-size: 15px;
-}
-.buttoncus:hover{
-    color: black;
-    transform: scale(1.2);
-    background-color: white;
+    color: #FD6FFF;
 }
 .buttoncust{
     color:white;
@@ -111,4 +117,12 @@ body{
 }
 #sidebar img{
     width: 250px;
+}
+.joinedyet{
+    padding-left: 20px;
+    color: #00C781;
+}
+a{
+    text-decoration: none;
+    color: #6FFFB0;
 }
