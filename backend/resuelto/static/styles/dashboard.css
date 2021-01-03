@@ -1,19 +1,199 @@
-h5.goalDateInfo{
-    text-align:right
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&family=Staatliches&display=swap');
+body{
+    margin: 0;
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 2px;
 }
-.navbar {
-    margin-bottom:0;
-    margin-top: 0;
-  }
-.jumbotron {
-    margin-bottom:0;
-    background-color: #9CF7EC !Important; 
+.container{
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 0.6fr 0.2fr 1fr 1fr;
+    grid-template-areas: 
+    'Nav Nav Nav Nav'
+    'Nav Nav Nav Nav'
+    'Navigation Navigation Navigation Navigation'
+    'Sidebar Post Post Post'
+    'Sidebar Post Post Post';
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #81FCED;
+    grid-area: Nav;
+}
+.posts{
+    grid-area: Post;
+    overflow: auto;
+    background-color: #DADADA;
+}
+.createresolution{
+    color: white;
+    background-color: black;
+    grid-area: Sidebar;
+}
+.navigation{
+    grid-area: Navigation;
+    background-color:#333333;
+}
+.rescontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.resheader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#6FFFB0;
+}
+input[type=text] {
+    background-color:black;
+    color: white;
+    border: none;
+}
+input[type=text]:focus {
+    border: 1px solid #81FCED;
+}
+#body{
+    background-color: black;
+    height: 200px;
+    color: white;
+    border: none;
+
+}
+#body:focus{
+    border: 1px solid #81FCED;
+}
+textarea{
+    background-color: black;
+    border: none;
+    color: white;
+}
+input[type=date] {
+    background-color: black;
+    color: white;
+    border: none;
+}
+input[type=submit] {
+    background-color: #3CBC8D;
+    color: black;
+    border: none;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+input[type=submit]:hover {
+    background-color: black;
+    color:#3CBC8D ;
+    border: 1px solid #3CBC8D;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.postgrid{
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 50px;
+    color: black;
+    display: grid;
+    height: 150px;
+    width: fit-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.8fr 0.2fr 2fr 1fr;
+    grid-template-areas: 
+    'Title'
+    'Author'
+    'Body'
+    'Support';
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 30px;
+    grid-area: Title;
+    color: #3D138D;
+}
+.author{
+    display: flex;
+    align-items: center;
+    grid-area: Author;
+    justify-content: left;
+    font-weight: 100;
+}
+.body{
+    display: flex;
+    justify-content: left;
+    grid-area: Body;
+}
+.support{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    grid-area: Support;
+}
+.buttoncus{
+    margin: 20px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    line-height: 20px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 50px;
+    font-size: 15px;
+}
+.buttoncus:hover{
+    color: black;
+    transform: scale(1.2);
+    background-color: white;
+}
+.headingcontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.inputext{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.inputbody{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.inputdate{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+.inputbutton{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-h1.logo{
-    font-size: 96px;
-    line-height: 96px;
-    font-family: 'Major Mono Display', monospace;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(4px);
+.headerclass{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Hanalei Fill', cursive;
+    letter-spacing: 2px;
+}
+.navigation{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+    color:#FD6FFF;
+    padding-left: 30px;
 }

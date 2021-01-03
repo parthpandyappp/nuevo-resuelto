@@ -30,7 +30,6 @@ def signup(request):
 
 
 def dashboard(request):
-
     if request.method == 'POST':
         print(request.POST.get('delete'))
         if request.POST.get('delete'):
@@ -45,8 +44,10 @@ def dashboard(request):
             respost.created = today.strftime("%Y-%m-%d")
             respost.modified = today.strftime("%Y-%m-%d")
             respost.save()
+            print("Resolution Received")
             form = ResolutionForm()
-            return render(request, "dashboard.html", {"form": form})
+            listz = resolute.objects.filter(author=request.user)
+            return render(request, "dashboard.html", {"form": form, "list": listz})
         else:
             return redirect('dashboard')
     else:
