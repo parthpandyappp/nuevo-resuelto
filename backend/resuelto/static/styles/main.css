@@ -78,6 +78,7 @@ h1{
 }
 
 .linkcontainer{
+    margin-top: 3rem;
     display: inline-flex;
     position: absolute;
     top: 50%;
