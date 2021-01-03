@@ -17,7 +17,7 @@
     <div id="navbar">
         <div class="navbarcontainer">
             <div class="logoutuser">
-                <a href="{% url 'LogoutUser' %}" class="buttoncus">Dashboard</a>
+                <a href="{% url 'dashboard' %}" class="buttoncus">Dashboard</a>
             </div>
             <div class="logoutuser">
                 <a href="{% url 'LogoutUser' %}" class="buttoncus">Logout</a>
@@ -46,7 +46,7 @@
                     <form method="post">
                         {% csrf_token %}
                         <input type="text" value={{x.id}} name="id" hidden>
-                        <input type="submit" class="buttoncust" value="Support">
+                        <input type="submit"  value="Support" class="psubmit">
                     </form>
                     {% endif %}
                     </div>

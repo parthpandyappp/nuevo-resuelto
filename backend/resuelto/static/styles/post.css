@@ -41,13 +41,13 @@ body{
 }
 @keyframes tanim{
     0%{
-        color: #6FFFB0 ;
+        color: #3D138D;
     }
     50%{
         color:#FD6FFF ;
     }
     100%{
-        color:#6FFFB0;
+        color:#3D138D;
     }
 }
 .navbarcontainer{
@@ -125,4 +125,35 @@ body{
 a{
     text-decoration: none;
     color: #6FFFB0;
+}
+input[type=submit] {
+    background-color: #3CBC8D;
+    color: black;
+    border: none;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+input[type=submit]:hover {
+    background-color: black;
+    color:#3CBC8D ;
+    border: 1px solid #3CBC8D;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.psubmit{
+    background-color: #3CBC8D;
+    color: black;
+    border: none;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
 }

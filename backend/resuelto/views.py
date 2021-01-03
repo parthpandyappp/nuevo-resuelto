@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from datetime import date
 from .models import resolute, Joined
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -29,6 +30,7 @@ def signup(request):
     return render(request, "registration/signup.html", context)
 
 
+@login_required(login_url="LoginPage")
 def dashboard(request):
     if request.method == 'POST':
         print(request.POST.get('delete'))
@@ -56,6 +58,7 @@ def dashboard(request):
         return render(request, "dashboard.html", {"form": form, "list": listz})
 
 
+@login_required(login_url="LoginPage")
 def resolutionPosts(request):
     if request.method == "POST":
         obj = Joined()
@@ -114,7 +117,7 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             me = request.user.username
-            you = f"Welcome {me}, You're succesfully logged in!"
+            you = f"Bye {me}, You're succesfully logged out!"
             messages.success(request, you)
             return redirect('dashboard')
         else:
