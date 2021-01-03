@@ -118,7 +118,7 @@ def loginPage(request):
             messages.success(request, you)
             return redirect('dashboard')
         else:
-            messages.error(
+            messages.warning(
                 request, "Sorry, something went wrong. Please check the provided credentials")
             return render(request, "login.html", context)
     else:

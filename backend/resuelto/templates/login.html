@@ -28,19 +28,22 @@
 
 <body>
     <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh">
-        {% if messages %}
-        <ul class="messages">
-            {% for msg in messages %}
-            <p class="text-center">
-                <div class="alert alert-{{msg.level_tag}} alert-dismissible text-center" role="alert">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <h3 style="color: red;">{{msg}}</h3>
-                </div>
-            </p>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        
+        <div class="text-center row" style="display: block;">
+            {% if messages %}
+            <ul class="messages">
+              {% for msg in messages %}
+              <p class="text-center">
+              <div class="alert alert-{{msg.level_tag}} alert-dismissible text-center" role="alert"
+                style="font-family: 'Fredoka One';font-size: 18px;">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{msg.message}}
+              </div>
+              </p>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        <div class="container">
         <div class="login-form">
             <form method="POST">
                 {% csrf_token %}
@@ -55,6 +58,9 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
+            <p class="text-center"><a href="{% url 'signup' %}" class="text-decoration-none"
+                style="font-family: 'Fredoka One';font-size: 18px;">Didn't registered? Sign Up</a></p>
+        </div>
         </div>
     </div>
 </body>
