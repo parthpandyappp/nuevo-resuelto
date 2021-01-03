@@ -3,7 +3,7 @@ from .forms import RegistrationForm, ResolutionForm
 from django.contrib.auth import authenticate, login, logout
 from datetime import date
 from .models import resolute
-
+from django.views.generic.list import ListView
 
 def home(request):
     form = ResolutionForm()
@@ -28,9 +28,26 @@ def signup(request):
     return render(request, "registration/signup.html", context)
 
 
-def dashboard(request):
-    if request.method == 'POST':
-        print(request.POST)
+class DashboardView(ListView):
+    model = resolute
+    paginate_by = 5
+    template_name = "dashboard.html"
+
+    def get_queryset(self):
+        return super().get_queryset().filter(author=self.request.user.id)
+    
+    def get_context_data(self, **kwargs):
+        kwargs['form'] = ResolutionForm()
+        return super().get_context_data(**kwargs)
+
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('LoginPage')
+        return super().get(request)
+
+    def post(self, request):
+        if not request.user.is_authenticated:
+            return redirect('LoginPage')
         form = ResolutionForm(request.POST)
         if form.is_valid():
             respost = form.save(commit=False)
@@ -40,14 +57,7 @@ def dashboard(request):
             respost.created = today.strftime("%Y-%m-%d")
             respost.modified = today.strftime("%Y-%m-%d")
             respost.save()
-            form = ResolutionForm()
-            return render(request, "dashboard.html", {"form": form})
-        else:
-            return redirect('dashboard')
-    else:
-        form = ResolutionForm()
-        return render(request, "dashboard.html", {"form": form})
-
+        return self.get(request)
 
 def resolutionPosts(request):
     list = resolute.objects.all()
@@ -87,9 +97,9 @@ def loginPage(request):
             login(request, user)
             me = request.user.username
             you = f"Welcome {me}, You're succesfully logged in!"
-            messages.success(request, you)
+            #messages.success(request, you)
             return redirect('dashboard')
-    messages.error(request, "Sorry, something went wrong. Please check the provided credentials")
+    #messages.error(request, "Sorry, something went wrong. Please check the provided credentials")
     return render(request, "login.html", context)
 
 
