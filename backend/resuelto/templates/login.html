@@ -49,17 +49,17 @@
                 {% csrf_token %}
                 <h2 class="mx-auto" style="font-family: Fredoka One;">Login</h2>
                 <div class="form-group">
-                    <label for="usernamex">Username</label>
+                    <label for="usernamex" style="font-family: Fredoka One;">Username</label>
                     <input type="text" class="form-control" name="username" id="usernamex" />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label for="exampleInputPassword1" style="font-family: Fredoka One;">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block" style="font-family: Fredoka One;">Submit</button>
             </form>
             <p class="text-center"><a href="{% url 'signup' %}" class="text-decoration-none"
-                style="font-family: 'Fredoka One';font-size: 18px;">Didn't registered? Sign Up</a></p>
+                style="font-family: 'Fredoka One';font-size: 18px;">Haven't registered? Sign Up</a></p>
         </div>
         </div>
     </div>
