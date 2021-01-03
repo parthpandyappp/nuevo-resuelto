@@ -6,7 +6,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
-    <script src= "{% static 'js/login.js' %}""></script>
+    <script src= "{% static 'js/login.js' %}"></script>
 
     
     <!--libraries for bootstrap -->
@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -22,6 +24,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh">
 {% if messages %}
     <ul class="messages">
         {% for msg in messages %}
@@ -34,13 +37,19 @@
         {% endfor %}
     </ul>
 {% endif %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <label for="usernamex">Username</label>
-        <input type="text" name="username" id="usernamex" />
-        <label for="passwordx">Password</label>
-        <input type="password" name="password" id="passwordx" />
-        <input type="submit" value="Submit" />
-    </form>
+<div class="login-form">
+    <form>
+        <div class="form-group">
+            <label for="usernamex">Username</label>
+            <input type="text" class="form-control" name="username" id="usernamex" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+</div>
+</div>
 </body>
 </html>
