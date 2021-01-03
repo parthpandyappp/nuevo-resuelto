@@ -1,23 +1,19 @@
+{% extends "default.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Calendar{% endblock %}
+
+{% block resources %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles/calendar.css' %}">
     <script src="{% static 'js/calendar.js' %}"></script>
-    <title>Document</title>
-</head>
+{% endblock %}
 
-<body>
+{% block body %}
     <h1>Home Page</h2>
         <form action="" method="POST">
             {% csrf_token %}
             {{form|crispy}}
             <input type="submit" value="submit">
         </form>
-</body>
-
-</html>
+{% endblock %}

@@ -1,14 +1,14 @@
+{% extends "default.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
+{% block title %}NUEVO{% endblock %}
+
+{% block resources %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
-    <title>NUEVO</title>
-</head>
-<body>
+{% endblock %}
+
+{% block body %}
     <div class="cursor"></div>
     <div class="headcontainer">
         <h1>NUEVO RESUELTO</h1>
@@ -22,6 +22,4 @@
         </div>
     </div>
     <script src="{% static 'js/home.js' %}""></script>
-</body>
-</html>
-
+{% endblock %}
