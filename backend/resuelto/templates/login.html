@@ -7,6 +7,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
     <script src="{% static 'js/login.js' %}"></script>
 
 
@@ -39,9 +40,11 @@
             {% endfor %}
         </ul>
         {% endif %}
+        
         <div class="login-form">
             <form method="POST">
                 {% csrf_token %}
+                <h2 class="mx-auto" style="font-family: Fredoka One;">Login</h2>
                 <div class="form-group">
                     <label for="usernamex">Username</label>
                     <input type="text" class="form-control" name="username" id="usernamex" />
