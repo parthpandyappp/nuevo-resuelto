@@ -15,9 +15,11 @@ body{
     'Sidebar Post Post Post';
 }
 #navbar {
+    background-color: black;
     grid-area: Nav;
 }
 #postbar{
+    background-color: black;
     padding-left: 20px;
     grid-area: Post;
     overflow: auto;
@@ -37,7 +39,7 @@ body{
     margin-right: 20px;
 }
 .username{
-    color: white;
+    color: white
     margin-right: 20px;
 }
 .postgrid{
@@ -108,5 +110,5 @@ body{
     color: black;
 }
 #sidebar img{
-    width: 280px
+    width: 250px;
 }

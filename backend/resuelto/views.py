@@ -63,9 +63,22 @@ def resolutionPosts(request):
         obj.user = request.user
         obj.save()
         print("Resolution joined")
-        return redirect('dashboard')
+        return redirect('resolutionPosts')
 
+    joins = Joined.objects.all()
     list = resolute.objects.all()
+    for x in list:
+        counter = 0
+        x.support = 'False'
+        for j in joins:
+            if j.resolution == x:
+                counter = counter+1
+                if j.user == request.user:
+                    x.support = 'True'
+                    print(request.user, "already joined", x.title)
+        x.counter = counter
+        print("counts for", x.title, "is", x.counter)
+
     return render(request, "resolutionPosts.html", {"list": list})
 
 

@@ -36,12 +36,21 @@
                 <div class="author">By {{x.author}}</div>
                 <div class="body">{{x.body}}</div>
                 <div class="support">
+                    <div>
+                        <h3>Joined by {{x.counter}} users</h3>
+                    </div>
+                    <div>
+                        {% if x.support == 'True' %}
+                        <p>You have already joined</p>
+                        {% else %}
                     <form method="post">
                         {% csrf_token %}
                         <input type="text" value={{x.id}} name="id" hidden>
                         <input type="submit" class="buttoncust" value="Support">
                     </form>
-                    <a href="" class="buttoncus">Read More</a>
+                    {% endif %}
+                    </div>
+                  
                 </div>
             </div>
             {% endfor %}
