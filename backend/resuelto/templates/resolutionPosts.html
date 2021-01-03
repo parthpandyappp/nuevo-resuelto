@@ -37,7 +37,8 @@
                 <div class="body">{{x.body}}</div>
                 <div class="support">
                     <form method="post">
-                        <input type="text" value={{x.id}} hidden>
+                        {% csrf_token %}
+                        <input type="text" value={{x.id}} name="id" hidden>
                         <input type="submit" class="buttoncust" value="Support">
                     </form>
                     <a href="" class="buttoncus">Read More</a>

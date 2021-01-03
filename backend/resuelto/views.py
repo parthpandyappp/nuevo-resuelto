@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import RegistrationForm, ResolutionForm
 from django.contrib.auth import authenticate, login, logout
 from datetime import date
-from .models import resolute
+from .models import resolute, Joined
 from django.contrib import messages
 
 
@@ -30,8 +30,12 @@ def signup(request):
 
 
 def dashboard(request):
+
     if request.method == 'POST':
-        print(request.POST)
+        print(request.POST.get('delete'))
+        if request.POST.get('delete'):
+            print(request.POST.get("id"))
+            obj = resolute.objects.get(pk=request.POST.get("id")).delete()
         form = ResolutionForm(request.POST)
         if form.is_valid():
             respost = form.save(commit=False)
@@ -47,10 +51,19 @@ def dashboard(request):
             return redirect('dashboard')
     else:
         form = ResolutionForm()
-        return render(request, "dashboard.html", {"form": form})
+        listz = resolute.objects.filter(author=request.user)
+        return render(request, "dashboard.html", {"form": form, "list": listz})
 
 
 def resolutionPosts(request):
+    if request.method == "POST":
+        obj = Joined()
+        obj.resolution = resolute.objects.get(pk=request.POST.get("id"))
+        obj.user = request.user
+        obj.save()
+        print("Resolution joined")
+        return redirect('dashboard')
+
     list = resolute.objects.all()
     return render(request, "resolutionPosts.html", {"list": list})
 
