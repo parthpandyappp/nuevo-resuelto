@@ -46,7 +46,8 @@ def dashboard(request):
             return redirect('dashboard')
     else:
         form = ResolutionForm()
-        return render(request, "dashboard.html", {"form": form})
+        list = resolute.objects.all()
+        return render(request, "dashboard.html", {"form": form, "list": list})
 
 
 def resolutionPosts(request):
